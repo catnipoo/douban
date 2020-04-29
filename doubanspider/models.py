@@ -11,6 +11,7 @@ class MoviesInfo(models.Model):
     language = models.CharField(max_length=20,verbose_name='语言')
     date = models.CharField(max_length=100,verbose_name='上映日期')
     lengh = models.CharField(max_length=100,verbose_name='片长')
+    aka = models.CharField(max_length=500,verbose_name="又名")
     imdb_href = models.CharField(max_length=200,verbose_name='IMDb链接')
     img_url = models.CharField(max_length=300,verbose_name='图片')
     score = models.DecimalField(max_digits=3,decimal_places=1,verbose_name='评分')

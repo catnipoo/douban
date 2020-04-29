@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{mov.title}}</title>
+    <style>
+        .tb{width: 800px;
+            }
+        .tb table td{border:1px solid #111111} 
+    </style>
+</head>
+<body>
+    <div class="tb">
+    <table >
+        <tr><td colspan="3"><h1>
+            <span property="v:itemreviewed">{{ mov.title }}</span>
+
+        </h1></td></tr>
+        <tr><td><img src="{{mov.img_url}}" alt="{{ mov.title }}" rel="v:image"></td>
+            <td><div id="info">
+                <span><span class="pl">导演</span>: <span class="attrs">{{mov.director}}</span></span><br>
+                <span><span class="pl">编剧</span>: <span class="attrs">{{ mov.screenwriter }}</span></span><br>
+                <span class="actor"><span class="pl">主演</span>:{{ mov.starring }}</span><br>
+                <span class="pl">类型:</span> <span property="v:genre">{{mov.types}}</span><br>
+                
+                <span class="pl">制片国家/地区:</span>{{ mov.area }}<br>
+                <span class="pl">语言:</span> {{ mov.language }}<br>
+                <span class="pl">上映日期:</span> <span property="v:initialReleaseDate">{{ mov.date }}</span><br>
+                <span class="pl">片长:</span> <span property="v:runtime" content="142">{{ mov.lengh }}</span><br>
+                <span class="pl">又名:</span> {{ mov.aka }}<br>
+                <span class="pl"><a href="{{ mov.imdb_href }}" target="_blank" rel="nofollow">IMDb链接</a></span><br>
+        
+        </div></td>
+            <td><div class="rating_wrap clearbox" rel="v:rating">
+        <div class="rating_self clearfix" typeof="v:Rating">
+            <strong class="ll rating_num" property="v:average">评分：{{ mov.score }}</strong>
+            <div class="rating_right ">                
+            </div>
+        </div>
+        <div class="ratings-on-weight">  
+        </div>
+        
+            </div></td></tr>
+        <tr><td colspan="3"><span class="all hidden" style="display: inline;">
+            剧情简介：
+            　　{{ mov.synopsis }}
+    </span></td></tr>
+    </table></div>
+</body>
+</html>

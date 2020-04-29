@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list</title>
+    <style>
+        .grid_view { border-top: 1px dashed #ccc;padding-left:0; }
+        .grid_view li { overflow: hidden; list-style:none; border-bottom: 1px dashed #ccc; padding: 12px 0 }
+        .grid_view .pic { color: #bbb; float: left; padding-right: 25px }
+        .grid_view .pic em { float: left; padding: 0 10px }        
+        .grid_view .pic span { text-align: left }
+        .grid_view .pic span img { padding-left: 26px }
+        .grid_view .info {overflow:hidden; zoom:1;}
+        .grid_view .info h2 { display: inline; font: 14px/150% Arial,Helvetica,sans-serif }
+        .grid_view .info .title { font: 14px/150% Arial,Helvetica,sans-serif }
+        .grid_view .info a:link span { color: #369 }
+        .grid_view .info a:visited span { color: #669 }
+        .grid_view .info a:hover span { color: #fff }
+        .grid_view .info a:active span { color: #fff }
+    </style>
+</head>
+<body>
+    <ol class="grid_view">
+        {% for movie in page_movies %}
+        <li>
+            <div class="item">
+                <div class="pic">
+                    <em class=""></em>
+                    <a href="../../detail/{{ movie.id }}/">
+                        <img width="100" alt="{{ movie.title }}" src="{{ movie.img_url }}" class="">
+                    </a>
+                </div>
+                <div class="info">
+                    <div class="hd">
+                        <a href="../../detail/{{ movie.id }}/">
+                            <span class="title">{{movie.title}}</span>
+                        </a>
+                    </div>
+                    <div class="bd">
+                        <p class="">
+                            <span>导演：</span> {{ movie.director }}<span>主演：</span> {{ movie.starring }}<br>
+                            {{ movie.date[0:3] }}&nbsp;/&nbsp;{{movie.area}}/{{movie.types}}
+                        </p>
+
+                        
+                        <div class="star">
+                                <span class="rating5-t">评分：</span>
+                                <span class="rating_num" property="v:average">{{movie.score}}</span>
+                                
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+<div class="pagenation">
+                <div id="pagination" class="page"></div>
+            </div>
+</ol>
+<script type="text/javascript" src="/static/js/jquery.pagination.min.js"></script>
+	<script>
+        $(function () {
+            $('#pagination').pagination({
+                currentPage: {{ page_num }},
+                totalPage: {{ total_page }},
+                callback:function (current) {
+                    // location.href = '/list/115/1/?sort=default';
+                     location.href = '/searchlist/' + current + '/';
+                }
+            })
+        });
+    </script>
+</body>
+</html>
